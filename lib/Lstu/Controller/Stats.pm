@@ -62,7 +62,7 @@ sub fullstats {
 
 sub stats {
     my $c = shift;
-    if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd'))) || $c->is_user_authenticated) {
+    if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd'))  && !defined($c->config('trust_http_auth'))) || $c->is_user_authenticated) {
         my $db_session = Lstu::DB::Session->new(
             app    => $c,
             token  => $c->session('token')

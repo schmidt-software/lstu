@@ -53,10 +53,12 @@
                     <%= l('License:') %> <%= link_to 'WTFPL' => 'http://www.wtfpl.net/' %> —
                     <%= link_to l('About') => 'https://framagit.org/fiat-tux/hat-softwares/lstu/blob/master/README.md' %> —
                     <%= link_to 'API' => url_for('api') %> —
-            % if (defined(config('ldap')) || defined(config('htpasswd'))) {
+            % if (defined(config('ldap')) || defined(config('htpasswd')) || defined(config('trust_http_auth'))) {
                 % if (is_user_authenticated()) {
-                    <%= link_to l('Statistics') => url_for('stats') %> —
-                    <%= link_to l('Logout') => url_for('/logout')%>
+                    <%= link_to l('Statistics') => url_for('stats') %>
+                    % if (!defined(config('trust_http_auth')) || defined(config('trust_http_auth')->{logout_url})) {
+                    — <%= link_to l('Logout') => url_for('/logout')%>
+                    % }
                 % } else {
                     <%= link_to l('Signin') => url_for('/login') %>
                 % }
