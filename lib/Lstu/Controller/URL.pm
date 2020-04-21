@@ -15,7 +15,7 @@ sub add {
     $c->cleaning;
 
     # Is the user allowed to create a short URL?
-    if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd')) && !defined($c->config('trust_http_auth')) || $c->is_user_authenticated) {
+    if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd')) && !defined($c->config('trust_http_auth')) || $c->is_user_authenticated)) {
         my $ip = $c->ip;
 
         # Check banning
