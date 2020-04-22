@@ -62,7 +62,7 @@ sub log_out {
     if ($c->is_user_authenticated) {
         $c->logout;
         if ($c->config->{trust_http_auth}->{logout_url}) {
-          $c->redirect_to($c->config->{trust_http_auth}->{logout_url});
+            $c->redirect_to($c->config->{trust_http_auth}->{logout_url});
         }
     }
     $c->respond_to(
