@@ -36,8 +36,13 @@ msgstr ""
 msgid "Bad password"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:66
+#: themes/default/templates/layouts/default.html.ep:69
 msgid "Browser extensions"
+msgstr ""
+
+#. (current_user()
+#: themes/default/templates/layouts/default.html.ep:59
+msgid "Connected as : %1"
 msgstr ""
 
 #: themes/default/templates/index.html.ep:21
@@ -133,7 +138,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:59
+#: themes/default/templates/layouts/default.html.ep:61
 msgid "Logout"
 msgstr ""
 
@@ -158,7 +163,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: lib/Lstu/Controller/Authent.pm:35 themes/default/templates/api.html.ep:18
+#: lib/Lstu/Controller/Authent.pm:41 themes/default/templates/api.html.ep:18
 msgid "Please, check your credentials: unable to authenticate."
 msgstr ""
 
@@ -190,7 +195,7 @@ msgstr ""
 msgid "Should always be successful"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:61 themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5
+#: themes/default/templates/layouts/default.html.ep:64 themes/default/templates/login.html.ep:16 themes/default/templates/logout.html.ep:5
 msgid "Signin"
 msgstr ""
 
@@ -198,7 +203,7 @@ msgstr ""
 msgid "Sorry, unable to parse the provided file"
 msgstr ""
 
-#: themes/default/templates/layouts/default.html.ep:58 themes/default/templates/layouts/default.html.ep:64 themes/default/templates/stats.html.ep:4
+#: themes/default/templates/layouts/default.html.ep:58 themes/default/templates/layouts/default.html.ep:67 themes/default/templates/stats.html.ep:4
 msgid "Statistics"
 msgstr ""
 
@@ -223,7 +228,7 @@ msgid "The URL you want to shorten comes from a domain (%1) that is blacklisted 
 msgstr ""
 
 #. ($c->url_for('/')
-#: lib/Lstu/Controller/Admin.pm:131 lib/Lstu/Controller/Stats.pm:184 lib/Lstu/Controller/URL.pm:229
+#: lib/Lstu/Controller/Admin.pm:132 lib/Lstu/Controller/Stats.pm:184 lib/Lstu/Controller/URL.pm:229
 msgid "The shortened URL %1 doesn't exist."
 msgstr ""
 
@@ -257,11 +262,11 @@ msgstr ""
 msgid "You asked to shorten too many URLs too quickly. You're banned for %1 hour(s)."
 msgstr ""
 
-#: lib/Lstu/Controller/Admin.pm:52 lib/Lstu/Controller/Authent.pm:26 themes/default/templates/api.html.ep:121 themes/default/templates/api.html.ep:17
+#: lib/Lstu/Controller/Admin.pm:52 lib/Lstu/Controller/Authent.pm:32 themes/default/templates/api.html.ep:121 themes/default/templates/api.html.ep:17
 msgid "You have been successfully logged in."
 msgstr ""
 
-#: lib/Lstu/Controller/Admin.pm:73 lib/Lstu/Controller/Authent.pm:65 themes/default/templates/api.html.ep:129 themes/default/templates/api.html.ep:31 themes/default/templates/logout.html.ep:3
+#: lib/Lstu/Controller/Admin.pm:73 lib/Lstu/Controller/Authent.pm:74 themes/default/templates/api.html.ep:129 themes/default/templates/api.html.ep:31 themes/default/templates/logout.html.ep:3
 msgid "You have been successfully logged out."
 msgstr ""
 
@@ -301,7 +306,7 @@ msgstr ""
 msgid "You will have the statistics page with the admin stats if you're succesfully logged in, or your stats and a failure message otherwise"
 msgstr ""
 
-#: lib/Lstu/Controller/Admin.pm:142
+#: lib/Lstu/Controller/Admin.pm:144
 msgid "You're not authenticated as the admin"
 msgstr ""
 

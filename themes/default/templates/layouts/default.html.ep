@@ -55,7 +55,8 @@
                     <%= link_to 'API' => url_for('api') %> —
             % if (defined(config('ldap')) || defined(config('htpasswd')) || defined(config('trust_http_auth'))) {
                 % if (is_user_authenticated()) {
-                    <%= link_to l('Statistics') => url_for('stats') %>
+                    <%= link_to l('Statistics') => url_for('stats') %> —
+                    <small><%= l('Connected as : %1', current_user()) %></small>
                     % if (!defined(config('trust_http_auth')) || defined(config('trust_http_auth')->{logout_url})) {
                     — <%= link_to l('Logout') => url_for('/logout')%>
                     % }
