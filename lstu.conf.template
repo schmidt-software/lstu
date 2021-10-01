@@ -193,6 +193,15 @@
     # optional, no default
     #htpasswd => 'lstu.passwd',
 
+    # Trust HTTP auth
+    # You need to configure authentication on your HTTP proxy server and provide user login in a
+    # HTTP header (commonly X-Forwarded-User).
+    #trust_http_auth => {
+    #    header      => 'X-Forwarded-User',                  # HTTP header name
+    #    logout_url  => 'https://sso.example.org/logout',    # Logout URL (if defined, the logout link will be displayed
+    #                                                        # and user will be redirect after local logout).
+    #},
+
     # if you've set ldap or htpasswd above, the session will last `session_duration` seconds before
     # the user needs to reauthenticate
     # optional, default is 3600

@@ -6,6 +6,12 @@ sub index {
     my $c = shift;
     if ($c->is_user_authenticated) {
         $c->redirect_to('index');
+    } elsif (defined($c->config('trust_http_auth'))) {
+        my $username = $c->req->headers->header($c->config('trust_http_auth')->{header});
+        if ($username) {
+             $c->authenticate($username, '');
+             $c->redirect_to('index');
+        }
     } else {
         $c->render(template => 'login');
     }
@@ -55,6 +61,9 @@ sub log_out {
     my $c = shift;
     if ($c->is_user_authenticated) {
         $c->logout;
+        if ($c->config->{trust_http_auth}->{logout_url}) {
+            $c->redirect_to($c->config->{trust_http_auth}->{logout_url});
+        }
     }
     $c->respond_to(
         json => sub {

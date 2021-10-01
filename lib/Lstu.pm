@@ -63,7 +63,7 @@ sub startup {
     $self->plugin('Lstu::Plugin::Helpers');
 
     # Authentication (if configured)
-    if (defined($self->config('ldap')) || defined($self->config('htpasswd'))) {
+    if (defined($self->config('ldap')) || defined($self->config('htpasswd')) || defined($self->config('trust_http_auth'))) {
         if (defined($self->config('ldap'))) {
             require Net::LDAP;
         }
@@ -153,6 +153,14 @@ sub startup {
                             return undef;
                         }
                         $c->app->log->info("[Simple authentication successful] login: $username, IP: ".$c->ip);
+                    } elsif (defined($c->config('trust_http_auth'))) {
+                        if ($c->req->headers->header($c->config->{trust_http_auth}->{header}) == $username) {
+                            $c->app->log->info("[trust_http_auth_user_header'] Authentication successful - Login: $username, IP: ".$c->ip);
+                        }
+                        else {
+                            $c->app->log->error("[trust_http_auth_user_header] HTTP header ".$c->config->{trust_http_auth}->{header}." not present.");
+                            return undef;
+                        }
                     }
 
                     return $username;
@@ -265,14 +273,14 @@ sub startup {
     # Normal route to controller
     $r->get('/' => sub {
         my $c = shift;
-        if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd'))) || $c->is_user_authenticated) {
+        if ((!defined($c->config('ldap')) && !defined($c->config('htpasswd')) && !defined($c->config('trust_http_auth'))) || $c->is_user_authenticated) {
             $c->render(template => 'index');
         } else {
             $c->redirect_to('login');
         }
     })->name('index');
 
-    if (defined $self->config('ldap') || defined $self->config('htpasswd')) {
+    if (defined $self->config('ldap') || defined $self->config('htpasswd') || defined($self->config('trust_http_auth'))) {
         # Login page
         $r->get('/login')
             ->to('Authent#index')
